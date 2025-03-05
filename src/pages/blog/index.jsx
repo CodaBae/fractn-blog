@@ -120,63 +120,6 @@ const Blog = () => {
             </div>
         </div>
  
-
-
-    // <div className='w-full'>
-    //     <div className="flex flex-col items-center gap-[80px] px-[220px] py-[80px]">
-    //         <p className='text-[#fff] font-euclid text-[48px] font-bold'>BLOG</p>
-    //         <div className="flex items-center gap-10">
-    //             {/* Topic Select */}
-    //             <div className="relative w-[7rem]">
-    //                 <select 
-    //                     value={topicOption} 
-    //                     onChange={(e) => handleOptionChange(e)} 
-    //                     className='bg-[#ebebf0] w-full outline-none h-[2.5rem] rounded-lg px-2 appearance-none border border-gray-300'
-    //                 >
-    //                     <option value="">All topics</option>
-    //                     <option value="Security">Security</option>
-    //                     {/* Add more topics as needed */}
-    //                 </select>
-    //                 <FiChevronDown className="absolute right-2 top-3 text-gray-500 pointer-events-none" />
-    //             </div>
-
-    //             {/* Year Select */}
-    //             <div className="relative w-[7rem]">
-    //                 <select 
-    //                     value={yearOption} 
-    //                     onChange={(e) => handleYearChange(e)} 
-    //                     className='bg-[#ebebf0] w-full h-[2.5rem] outline-none rounded-lg px-2 appearance-none border border-gray-300'
-    //                 >
-    //                     <option value="">All years</option>
-    //                     <option value="2023">2023</option>
-    //                     <option value="2024">2024</option>
-    //                     <option value="2025">2025</option>
-    //                 </select>
-    //                 <FiChevronDown className="absolute right-2 top-3 text-gray-500 pointer-events-none" />
-    //             </div>
-    //         </div>
-    //     </div>
-
-    //     <div className={`${blogs?.length > 0 ? "grid grid-cols-2 gap-[32px]" :  "flex items-center justify-center"} px-[220px] pb-[80px]`}>
-    //         {loading ? 
-    //             <p className='text-2xl text-[#fff] text-center font-semibold'>Loading Blog...</p> :
-    //             blogs.length > 0 ?
-    //             blogs.map((item) => (
-    //                 <div key={item.id} className='flex cursor-pointer flex-col h-[28rem] rounded-lg ' onClick={() => {navigate("/view-details", {state: item}), window.scrollTo(0,0)}} >
-    //                     <img src={item.imageUrl} alt="event" className='rounded-t-lg w-[30.25rem] h-[15rem] object-cover' />
-    //                     <div className='flex flex-col gap-3 bg-[#f7f7f7] rounded-b-lg p-4 h-[15rem]'>
-    //                         <p className='font-medium font-euclid text-[#505a63] text-base leading-[32px]'>{item.topic}</p>
-    //                         <p className='font-semibold font-euclid text-[#191c1f] text-[24px] leading-[32px]'>{item.title}</p>
-    //                         <p className='font-euclid text-[#505a63] font-semibold leading-5 text-xs'>
-    //                             {item.createdAt?.toDate().toDateString()}
-    //                         </p>
-    //                     </div>
-    //                 </div>
-    //             )) : 
-    //             <p className='text-2xl text-[#fff] text-center font-euclid font-semibold'>No Blogs Available</p>
-    //         }
-    //     </div>
-    // </div>
   )
 }
 
