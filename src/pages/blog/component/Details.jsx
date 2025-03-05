@@ -1,49 +1,3 @@
-// import React from 'react'
-// import { useLocation, useNavigate } from 'react-router-dom'
-
-// const Details = () => {
-//     const { state } = useLocation()
-//     const navigate = useNavigate()
-
-//     // Safe timestamp conversion
-//     const getFormattedDate = () => {
-//         if (!state?.createdAt) return ''
-        
-//         // Check if it's a Firestore Timestamp
-//         if (typeof state.createdAt.toDate === 'function') {
-//             return state.createdAt.toDate().toDateString()
-//         }
-        
-//         // Fallback for raw timestamp
-//         return new Date(state.createdAt).toDateString()
-//     }
-
-//     return (
-//         <div className='w-full'>
-//             <div className='mx-auto mt-32 gap-10 flex flex-col w-8/12'>
-//                 <button onClick={() => {navigate(-1), window.scrollTo(0, 0)}} className='bg-[#FFF] w-[100px] flex items-center justify-center h-[44px] rounded-lg'>
-//                     <p className='text-[#000] font-inter text-lg'>Back</p>
-//                 </button>
-//                 <img src={state?.imageUrl} className='mx-auto h-[35rem] w-full' alt='BlogImage' />
-//                 <div className='w-[48rem] mx-auto items-start flex flex-col gap-10'>
-//                     <div className='flex flex-col gap-5 items-start'>
-//                         <p className='font-euclid text-[32px] font-bold text-[#fff]'>{state?.title}</p>
-//                         <p className='font-euclid text-[#fff] text-sm'>
-//                             {state?.topic}
-//                             <span className='ml-2'>{getFormattedDate()}</span>
-//                         </p>
-//                         <div className='w-full'> 
-//                             <p dangerouslySetInnerHTML={{ __html: state.content }} className='text-[#fff] font-euclid text-base'/> 
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default Details
-
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -52,14 +6,22 @@ const Details = () => {
     const navigate = useNavigate()
 
     const getFormattedDate = () => {
-        if (!state?.createdAt) return ''
-        
-        if (typeof state.createdAt.toDate === 'function') {
-            return state.createdAt.toDate().toDateString()
+        if (!state?.createdAt) return '';
+    
+        // Convert Firestore Timestamp object to a JavaScript Date
+        if (typeof state?.createdAt.toDate === 'function') {
+            return state?.createdAt.toDate().toDateString();
         }
-        
-        return new Date(state.createdAt).toDateString()
-    }
+    
+        // Convert Firestore Timestamp-like object to a Date (if it has seconds)
+        if (typeof state?.createdAt.seconds === 'number') {
+            return new Date(state?.createdAt.seconds * 1000).toDateString();
+        }
+    
+        // Fallback in case of unexpected format
+        return new Date(state?.createdAt).toDateString();
+    };
+    
 
     return (
         <div className='w-full px-4 sm:px-6 lg:px-8'>
