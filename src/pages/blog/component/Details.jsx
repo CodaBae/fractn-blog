@@ -45,11 +45,11 @@ const Details = () => {
                 <div className='w-full mx-auto space-y-6 md:space-y-10'>
                     <div className='space-y-4 md:space-y-6'>
                         <h1 className='font-euclid text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-snug'>
-                            {state?.title}
+                            {state?.topic}
                         </h1>
                         
                         <div className='font-euclid text-white text-sm md:text-base flex flex-col md:flex-row md:items-center gap-2 md:gap-4'>
-                            <span className='font-medium'>{state?.topic}</span>
+                            <span className='font-medium'>{state?.category}</span>
                             <span className='hidden md:block'>•</span>
                             <span>{getFormattedDate()}</span>
                         </div>
