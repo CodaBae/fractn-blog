@@ -58,7 +58,9 @@ const Blog = () => {
     console.log(blogs, "blogs")
 
   return (
-        <div className='w-full '>
+        <div 
+            className='w-full'
+        >
             <div className="flex flex-col items-center mt-20 gap-8 md:gap-20 px-4 md:px-8 lg:px-16 xl:px-32 py-8 md:py-16">
                 <p className='text-white font-euclid text-3xl md:text-4xl lg:text-5xl font-bold text-center'>BLOG</p>
                 <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-10 w-full max-w-4xl">
@@ -71,7 +73,7 @@ const Blog = () => {
                         >
                             <option value="">All topics</option>
                             <option value="Security">Security</option>
-                            {/* Add more topics as needed */}
+                    
                         </select>
                         <FiChevronDown className="absolute right-3 top-3 text-gray-500 pointer-events-none" />
                     </div>
@@ -84,8 +86,6 @@ const Blog = () => {
                             className='bg-gray-100 w-full h-10 outline-none rounded-lg px-3 appearance-none border border-gray-300 text-sm md:text-base'
                         >
                             <option value="">All years</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
                             <option value="2025">2025</option>
                         </select>
                         <FiChevronDown className="absolute right-3 top-3 text-gray-500 pointer-events-none" />
@@ -106,10 +106,10 @@ const Blog = () => {
                                     className='w-full h-full object-cover' 
                                 />
                             </div>
-                            <div className='flex flex-col gap-3 bg-[#f7f7f7] p-4 h-48 md:h-52'>
-                                <p className='font-medium font-euclid text-[#505a63] text-sm md:text-base'>{item.topic}</p>
-                                <p className='font-semibold font-euclid text-[#191c1f] text-lg md:text-xl line-clamp-2'>{item.title}</p>
-                                <p className='font-euclid text-[#505a63] font-medium text-xs md:text-sm'>
+                            <div className='flex flex-col gap-3 bg-[#1A1818] p-4 h-48 md:h-52'>
+                                <p className='font-medium font-euclid text-[#fff] text-sm md:text-base'>{item.topic}</p>
+                                <p className='font-semibold font-euclid text-[#fff] text-lg md:text-xl line-clamp-2'>{item.title}</p>
+                                <p className='font-euclid text-[#fff] font-medium text-xs md:text-sm'>
                                     {item.createdAt?.toDate().toDateString()}
                                 </p>
                             </div>

@@ -14,7 +14,7 @@ const Header = () => {
     <div 
       className='bg-[#000] fixed z-50 w-full pl-[32px] h-[80px] pr-[127px] py-5 flex items-center justify-between'
     >
-      <img src={Logo} alt="Logo" className='w-auto h-[44px] cursor-pointer' onClick={() => {navigate("/"); window.scrollTo(0, 0)}}/>       
+      <img src={Logo} alt="Logo" className='w-auto h-[44px] cursor-pointer' onClick={() => {window.open("https://www.fractnmoney.com", "_blank"); window.scrollTo(0, 0)}}/>       
     </div>
   )
 }

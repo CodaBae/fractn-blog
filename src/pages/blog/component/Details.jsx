@@ -28,9 +28,9 @@ const Details = () => {
             <div className='mx-auto mt-20 md:mt-32 gap-6 md:gap-10 flex flex-col max-w-4xl'>
                 <button 
                     onClick={() => {navigate(-1), window.scrollTo(0, 0)}} 
-                    className='bg-white w-28 md:w-32 flex items-center justify-center h-11 rounded-lg hover:opacity-80 transition-opacity'
+                    className='bg-[#000] border border-[#fff] w-28 md:w-32 flex items-center justify-center h-11 rounded-[15px] hover:opacity-80 transition-opacity'
                 >
-                    <p className='text-black font-inter text-base md:text-lg'>Back</p>
+                    <p className='text-[#fff] font-inter font-semibold text-base md:text-lg'>Back</p>
                 </button>
                 
                 {/* Responsive Image Container */}
