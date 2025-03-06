@@ -32,37 +32,6 @@ const Blog = () => {
         "Use cases & Testimonials"
     ] 
 
-    // const getBlogs = async () => {
-    //     setLoading(true)
-    //     try {
-    //         const blogsRef = collection(db, 'blogs')
-    //         const filters = []
-            
-    //         if (categoryOption) {
-    //             filters.push(where('category', '==', categoryOption))
-    //         }
-            
-    //         if (yearOption) {
-    //             filters.push(where('year', '==', yearOption))
-    //         }
-            
-    //         const q = filters.length > 0 
-    //             ? query(blogsRef, ...filters) 
-    //             : blogsRef
-
-    //         const querySnapshot = await getDocs(q)
-    //         const blogsData = querySnapshot.docs.map(doc => ({
-    //             id: doc.id,
-    //             ...doc.data()
-    //         }))
-    //         setBlogs(blogsData)
-    //     } catch (error) {
-    //         console.error("Error fetching blogs: ", error)
-    //     } finally {
-    //         setLoading(false)
-    //     }
-    // }
-
     const getBlogs = async () => {
         setLoading(true)
         try {
