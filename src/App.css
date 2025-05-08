@@ -1,0 +1,22 @@
+h1 {
+    font-weight: 700;
+}
+
+h2 {
+    font-size: larger;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+p {
+    font-family: "poppins";
+}
+
+ul {
+    padding-left: 1.5rem;
+    list-style-type: decimal;
+}
+
+li {
+    margin-top: 15px;
+}

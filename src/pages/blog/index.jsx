@@ -12,9 +12,6 @@ const Blog = () => {
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-        getBlogs()
-    }, [categoryOption, yearOption])
 
     const handleOptionChange = (e) => {
         setCategoryOption(e.target.value)
@@ -71,10 +68,12 @@ const Blog = () => {
         }
     }
 
+    useEffect(() => {
+        getBlogs()
+    }, [categoryOption, yearOption])
+
   return (
-        <div 
-            className='w-full'
-        >
+        <div className='w-full'>
             <div className="flex flex-col items-center mt-20 gap-8 md:gap-20 px-4 md:px-8 lg:px-16 xl:px-32 py-8 md:py-16">
                 <p className='text-white font-euclid text-3xl md:text-4xl lg:text-5xl font-bold text-center'>BLOG</p>
                 <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-10 w-full max-w-4xl">

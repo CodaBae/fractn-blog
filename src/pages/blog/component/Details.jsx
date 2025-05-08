@@ -5,6 +5,8 @@ const Details = () => {
     const { state } = useLocation()
     const navigate = useNavigate()
 
+    console.log(state, "state")
+
     const getFormattedDate = () => {
         if (!state?.createdAt) return '';
     
