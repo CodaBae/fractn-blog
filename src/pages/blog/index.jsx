@@ -114,7 +114,7 @@ const Blog = () => {
                     <p className='text-xl md:text-2xl text-white text-center font-semibold'>Loading Blog...</p> :
                     blogs.length > 0 ?
                     blogs.map((item) => (
-                        <div key={item.id} className='flex cursor-pointer flex-col h-auto md:h-[28rem] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow' onClick={() => {navigate("/view-details", {state: item}), window.scrollTo(0,0)}} >
+                        <div key={item.id} className='flex cursor-pointer flex-col h-auto md:h-[28rem] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow' onClick={() => {navigate(`/blog/${item.slug}`, {state: item}), window.scrollTo(0,0)}} >
                             <div className="aspect-video overflow-hidden">
                                 <img 
                                     src={item.imageUrl} 

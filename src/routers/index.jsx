@@ -10,7 +10,7 @@ export default function Routers() {
         <Routes>
           <Route element={<PageLayout />}>
             <Route path='/' element={<Blog />} />
-            <Route path='/view-details' element={<Details />} />
+            <Route path='/blog/:slug' element={<Details />} />
  
           </Route>
           
