@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import {  useLocation, useNavigate, useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async';
+// import { Helmet } from 'react-helmet-async';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../../firebase-config';
+import useDocumentHead from "../../../hooks/useDocumentHead"
 
 const Details = () => {
     const { slug } = useParams()
@@ -13,13 +14,13 @@ const Details = () => {
     console.log(slug, "slug")
 
   
-     useEffect(() => {
-    const fetchPost = async () => {
-      const docRef = doc(db, 'blogs', state?.id);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setPost(docSnap.data());
-      }
+    useEffect(() => {
+        const fetchPost = async () => {
+        const docRef = doc(db, 'blogs', state?.id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            setPost(docSnap.data());
+        }
     };
     
     fetchPost();
@@ -43,25 +44,30 @@ const Details = () => {
     };
 
     console.log(post, "max")
+
+    useDocumentHead({
+        title: `${post?.topic}`,
+        description: `${post?.metaDescription}`
+    });
     
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>{post?.topic}</title>
                 <meta name="description" content={post?.metaDescription} />
                 
-                {/* Open Graph */}
+                {/* Open Graph 
                 <meta property="og:title" content={post?.topic} />
                 <meta property="og:description" content={post?.metaDescription} />
                 <meta property="og:image" content={post?.imageUrl} />
                 
-                {/* Twitter Card */}
+                {/* Twitter Card 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={post?.topic} />
                 <meta name="twitter:description" content={post?.metaDescription} />
                 <meta name="twitter:image" content={post?.imageUrl} />
-            </Helmet>
+            </Helmet> */}
             <main className='w-full px-4 sm:px-6 lg:px-8'>
                 <article className='mx-auto mt-20 md:mt-32 gap-6 md:gap-10 flex flex-col max-w-4xl'>
                     <header>
