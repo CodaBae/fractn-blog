@@ -80,15 +80,23 @@ const Details = () => {
                             />
                         </div>
 
-                        <div className='space-y-4 md:space-y-6 mt-6'>
-                            <h1 className='font-euclid text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-snug'>
+                        <div className='space-y-4 md:space-y-8 mt-6'>
+                            <h1 className='font-euclid text-2xl md:text-4xl lg:text-5xl font-bold text-[#6B7280] leading-snug'>
                                 {post?.topic}
                             </h1>
                             
-                            <div className='font-euclid text-white text-sm md:text-base flex flex-col md:flex-row md:items-center gap-2 md:gap-4'>
-                            <span className='font-medium'>{post?.category}</span>
-                            <span className='hidden md:block'>•</span>
-                            <span>{getFormattedDate()}</span>
+                            <div className='flex items-center justify-between'>
+                                <div className='flex items-center gap-4'>
+                                    <img src={post?.authorImageUrl} alt={post?.author} className="rounded-full w-10 h-10" />
+                                    <p className='font-euclid text-[#6B7280] font-[600] text-xs md:text-[18px]'>
+                                        {post?.author}
+                                    </p>
+                                </div>
+                                <div className='font-euclid text-[#6B7280] text-sm md:text-[18px] flex flex-col md:flex-row md:items-center gap-2 md:gap-4'>
+                                    <span className='font-medium'>{post?.category}</span>
+                                    <span className='hidden md:block'>•</span>
+                                    <span>{getFormattedDate()}</span>
+                                </div>
                             </div>
                         </div>
                     </header>
@@ -96,7 +104,7 @@ const Details = () => {
                     <section className='prose prose-invert max-w-none w-full'>
                         <div 
                             dangerouslySetInnerHTML={{ __html: post?.content }} 
-                            className='text-white font-euclid text-base md:text-lg leading-relaxed'
+                            className='text-[#6B7280] font-euclid text-base md:text-lg leading-relaxed'
                         />
                     </section>
                 </article>
