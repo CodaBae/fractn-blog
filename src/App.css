@@ -7,10 +7,12 @@ h2 {
     font-family: "poppins";
     font-weight: 600;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 p {
     font-family: "poppins";
+  
 }
 
 ul {
@@ -23,7 +25,7 @@ li {
 }
 
 p > img {
-    width: 500px;
+    width: 1000px;
     margin-top: 10px;
     margin-bottom: 10px;
     object-fit: cover;
@@ -35,7 +37,8 @@ li > img {
     margin-bottom: 10px;
 }
 
-a {
+p > a {
     cursor: pointer;
-    color: "#1EC677";
+    color: #1EC677;
+    text-decoration: underline;
 }
