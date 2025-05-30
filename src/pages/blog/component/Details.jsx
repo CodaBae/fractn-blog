@@ -91,14 +91,14 @@ const Details = () => {
                                 {post?.topic}
                             </h1>
                             
-                            <div className='flex items-center justify-between'>
+                            <div className='flex flex-col md:flex-row items-start gap-5 md:gap-auto md:items-center justify-between'>
                                 <div className='flex items-center gap-4'>
                                     <img src={post?.authorImageUrl} alt={post?.author} className="rounded-full w-10 h-10" />
-                                    <p className='font-euclid text-[#6B7280] font-[600] text-xs md:text-[18px]'>
+                                    <p className='font-euclid text-[#6B7280] font-[600] text-base md:text-[18px]'>
                                         {post?.author}
                                     </p>
                                 </div>
-                                <div className='font-euclid text-[#6B7280] text-sm md:text-[18px] flex flex-col md:flex-row md:items-center gap-2 md:gap-4'>
+                                <div className='font-euclid text-[#6B7280] text-base md:text-[18px] flex flex-col md:flex-row md:items-center gap-2 md:gap-4'>
                                     <span className='font-medium'>{post?.category}</span>
                                     <span className='hidden md:block'>•</span>
                                     <span>{getFormattedDate()}</span>
