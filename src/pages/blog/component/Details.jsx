@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import {  useLocation, useNavigate, useParams } from 'react-router-dom'
-// import { Helmet } from 'react-helmet-async';
-import { doc, getDoc } from 'firebase/firestore';
+import { 
+  collection, 
+  query, 
+  where, 
+  limit, 
+  getDocs 
+} from 'firebase/firestore';
 import { db } from '../../../firebase-config';
 import useDocumentHead from "../../../hooks/useDocumentHead"
 
@@ -9,22 +14,37 @@ const Details = () => {
     const { slug } = useParams()
     const { state } = useLocation()
     const [post, setPost] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate()
 
     console.log(slug, "slug")
 
-  
+
     useEffect(() => {
         const fetchPost = async () => {
-        const docRef = doc(db, 'blogs', state?.id);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            setPost(docSnap.data());
+        try {
+            setLoading(true);
+            if (!slug) return;
+
+            const blogsRef = collection(db, 'blogs');
+            const q = query(blogsRef, where("slug", "==", slug), limit(1));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+            setPost(querySnapshot.docs[0].data());
+            } else {
+            navigate('/', { replace: true });
+            }
+        } catch (error) {
+            console.error("Error fetching post:", error);
+            navigate('/', { replace: true });
+        } finally {
+            setLoading(false);
         }
-    };
-    
-    fetchPost();
-  }, [slug]);
+        };
+
+        fetchPost();
+    }, [slug, navigate]);
 
     const getFormattedDate = () => {
         if (!post?.createdAt) return '';
@@ -50,29 +70,21 @@ const Details = () => {
         description: `${post?.metaDescription}`
     });
     
+    if (loading) {
+        return <div className="text-center py-20 mt-20 font-euclid text-[#6B7280] font-[600] text-base md:text-[18px]">Loading post...</div>;
+    }
+
+    if (!post) {
+        return <div className="text-center py-20 mt-20 font-euclid text-[#6B7280] font-[600] text-base md:text-[18px]">Post not found</div>;
+    }
 
     return (
         <>
-            {/* <Helmet>
-                <title>{post?.topic}</title>
-                <meta name="description" content={post?.metaDescription} />
-                
-                {/* Open Graph 
-                <meta property="og:title" content={post?.topic} />
-                <meta property="og:description" content={post?.metaDescription} />
-                <meta property="og:image" content={post?.imageUrl} />
-                
-                {/* Twitter Card 
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={post?.topic} />
-                <meta name="twitter:description" content={post?.metaDescription} />
-                <meta name="twitter:image" content={post?.imageUrl} />
-            </Helmet> */}
             <main className='w-full px-4 sm:px-6 lg:px-8'>
                 <article className='mx-auto mt-20 md:mt-32 gap-6 md:gap-10 flex flex-col max-w-4xl'>
                     <header>
                         <button 
-                            onClick={() => {navigate(-1), window.scrollTo(0, 0)}} 
+                            onClick={() => {navigate('/'), window.scrollTo(0, 0)}} 
                             className='bg-[#000] border border-[#fff] w-28 md:w-32 flex items-center justify-center h-11 rounded-[15px] hover:opacity-80 transition-opacity'
                         >
                             <p className='text-[#fff] font-inter font-semibold text-base md:text-lg'>Back</p>
